@@ -96,7 +96,7 @@ _ReSharper*/
 *.DotSettings.user
 
 # Rider
-.idea
+*/.idea
 
 # JustCode is a .NET coding add-in
 .JustCode
