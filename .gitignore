@@ -96,7 +96,10 @@ _ReSharper*/
 *.DotSettings.user
 
 # Rider
-*/.idea
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
 
 # JustCode is a .NET coding add-in
 .JustCode
