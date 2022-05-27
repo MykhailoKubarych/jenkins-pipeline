@@ -10,7 +10,8 @@ pipeline {
 
         stage("test") {
             steps {
-                echo 'testing the applications...'
+                sh "docker-compose -f docker-compose-base.yml build lens.build"
+                sh "docker-compose -f docker-compose-base.yml run lens.build"
             }
         }
 
@@ -20,17 +21,9 @@ pipeline {
             }
         }
 
-        stage('Clean workspace') {
-            steps {
-                echo('start cleaning')
-                cleanWs()
-                echo('cleaned...')
-            }  
-        }
-
         stage('Git Checkout') {
             steps {
-                    git branch: 'master', credentialsId: 'jenkins-pipeline' url: 'https://github.com/MykhailoKubarych/jenkins-pipeline'
+                    git branch: 'master', credentialsId: 'jenkins-pipeline' url: 'https://github.com/MykhailoKubarych/jenkins-pipeline.git'
                 }
             }
         }
@@ -38,15 +31,24 @@ pipeline {
         stage('Nuget restore') {
             steps {
                 dotnetRestore 'dotnet restore ${workspace}\\Sample\\Sample.sln'
-                ecko('Nuget pacjages restored.')
+                echo('Nuget pacjages restored.')
             }
         }
 
-        sstage ('Build api') {
+        stage ('Build api') {
             steps {
                 dotnetBuild 'dotnet restore ${workspace}\\jenkins-pipeline\\Sample\\Sample.Web\\Sample.Web.csproj'
                 echo('Api built')
             }
+        }
+
+
+        stage('Clean workspace') {
+            steps {
+                echo('start cleaning')
+                cleanWs()
+                echo('cleaned...')
+            }  
         }
     }
 }

@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  base.build:
+    image: build:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: dotnet test -p:BuildInParallel=false -m:1 Sample.sln
