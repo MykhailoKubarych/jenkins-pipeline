@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "$PATH:/usr/local/bin"
+    }
+
     stages {
         stage("build") {
             steps {
@@ -36,5 +40,13 @@ pipeline {
                 echo('cleaned...')
             }  
         }
+    }
+}
+
+def runShell(commandString) {
+    try {
+        sh commandString
+    } catch (Exception ex) {
+        echo "Error: ${ex}";
     }
 }
