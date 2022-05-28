@@ -20,5 +20,11 @@ namespace Sample.Web.Tests
         {
             Assert.Pass();
         }
+
+        Test]
+        public void Test3()
+        {
+            Assert.Pass();
+        }
     }
 }
