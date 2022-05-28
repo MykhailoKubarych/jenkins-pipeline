@@ -21,20 +21,6 @@ pipeline {
             }
         }
 
-        stage('Git Checkout') {
-            steps {
-                    git branch: 'master', credentialsId: 'jenkins-pipeline' url: 'https://github.com/MykhailoKubarych/jenkins-pipeline.git'
-                }
-            }
-        }
-        
-        stage('Nuget restore') {
-            steps {
-                dotnetRestore 'dotnet restore ${workspace}\\Sample\\Sample.sln'
-                echo('Nuget pacjages restored.')
-            }
-        }
-
         stage ('Build api') {
             steps {
                 dotnetBuild 'dotnet restore ${workspace}\\jenkins-pipeline\\Sample\\Sample.Web\\Sample.Web.csproj'
