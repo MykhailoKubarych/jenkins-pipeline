@@ -12,6 +12,13 @@ pipeline {
             }
         }
 
+        stage("docker version") {
+            steps {
+                sh "docker version"
+                sh "docker-compose version"
+            }
+        }
+
         stage("test") {
             steps {
                 sh "docker-compose -f docker-compose-base.yml build lens.build"
