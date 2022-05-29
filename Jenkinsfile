@@ -13,6 +13,7 @@ pipeline {
                 sh "ls -R | grep docker"
                 sh "docker version"
                 sh "docker-compose version"
+                sh "docker compose version"
             }
         }
 
