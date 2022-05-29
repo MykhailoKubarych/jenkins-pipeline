@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "$PATH:/usr/local/bin"
-    }
-
     stages {
         stage("build") {
             steps {
@@ -14,6 +10,7 @@ pipeline {
 
         stage("docker version") {
             steps {
+                sh "ls -R | grep docker"
                 sh "docker version"
                 sh "docker-compose version"
             }
