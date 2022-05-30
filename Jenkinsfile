@@ -12,8 +12,8 @@ pipeline {
             steps {
                 sh "docker version"
 
-                sh "docker build -t lens.build -f Dockerfile ."
-                sh "docker run 19cd76673d84 lens.build"
+                sh "docker build -t deleted -f Dockerfile ."
+                sh "docker run --rm deleted
             }
         }
 
