@@ -13,7 +13,7 @@ pipeline {
                 sh "docker version"
 
                 sh "docker build -t deleted -f Dockerfile ."
-                sh "docker run --rm deleted
+                sh "docker run --rm deleted"
             }
         }
 
