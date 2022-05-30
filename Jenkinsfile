@@ -10,9 +10,10 @@ pipeline {
 
         stage("docker version") {
             steps {
+                sh "docker-compose version"
                 sh "ls -R | grep docker"
                 sh "docker version"
-                sh "docker-compose version"
+
                 sh "docker compose version"
             }
         }
