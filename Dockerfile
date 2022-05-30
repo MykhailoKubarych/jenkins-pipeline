@@ -11,3 +11,4 @@ USER root
 WORKDIR /app
 COPY --from=build /app/build .
 WORKDIR /app/Sample
+CMD "dotnet test -p:BuildInParallel=false -m:1 Sample.sln"
