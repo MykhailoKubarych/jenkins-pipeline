@@ -10,18 +10,17 @@ pipeline {
 
         stage("docker version") {
             steps {
-                sh "docker-compose version"
-                sh "ls -R | grep docker"
                 sh "docker version"
 
-                sh "docker compose version"
+                sh "docker build -t lens.build -f Dockerfile ."
+                sh "docker run 19cd76673d84 lens.build"
             }
         }
 
         stage("test") {
             steps {
-                sh "docker-compose -f docker-compose-base.yml build lens.build"
-                sh "docker-compose -f docker-compose-base.yml run lens.build"
+                // sh "docker-compose -f docker-compose-base.yml build lens.build"
+                // sh "docker-compose -f docker-compose-base.yml run lens.build"
             }
         }
 
