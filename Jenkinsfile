@@ -17,12 +17,12 @@ pipeline {
             }
         }
 
-        stage("test") {
-            steps {
-                // sh "docker-compose -f docker-compose-base.yml build lens.build"
-                // sh "docker-compose -f docker-compose-base.yml run lens.build"
-            }
-        }
+        // stage("test") {
+        //     steps {
+        //         sh "docker-compose -f docker-compose-base.yml build lens.build"
+        //         sh "docker-compose -f docker-compose-base.yml run lens.build"
+        //     }
+        // }
 
         stage("deploy") {
             steps {
